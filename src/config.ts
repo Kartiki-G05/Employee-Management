@@ -21,3 +21,12 @@ export const DEPARTMENTS = [
   'Legal',
   'Executive'
 ];
+
+// JWT token key
+export const TOKEN_KEY = 'token';
+
+// API endpoints
+export const ENDPOINTS = {
+  LOGIN: '/auth/login',
+  EMPLOYEES: '/employees'
+};

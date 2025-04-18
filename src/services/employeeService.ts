@@ -1,9 +1,10 @@
 import api from './authService';
 import { Employee, EmployeeFormData } from '../types';
+import { ENDPOINTS } from '../config';
 
 export const getAllEmployees = async (): Promise<Employee[]> => {
   try {
-    const response = await api.get('/employees');
+    const response = await api.get(ENDPOINTS.EMPLOYEES);
     return response.data;
   } catch (error) {
     console.error('Error fetching employees:', error);
@@ -13,7 +14,7 @@ export const getAllEmployees = async (): Promise<Employee[]> => {
 
 export const getEmployeeById = async (id: string): Promise<Employee> => {
   try {
-    const response = await api.get(`/employees/${id}`);
+    const response = await api.get(`${ENDPOINTS.EMPLOYEES}/${id}`);
     return response.data;
   } catch (error) {
     console.error(`Error fetching employee ${id}:`, error);
@@ -23,7 +24,7 @@ export const getEmployeeById = async (id: string): Promise<Employee> => {
 
 export const createEmployee = async (employeeData: EmployeeFormData): Promise<Employee> => {
   try {
-    const response = await api.post('/employees', employeeData);
+    const response = await api.post(ENDPOINTS.EMPLOYEES, employeeData);
     return response.data;
   } catch (error) {
     console.error('Error creating employee:', error);
@@ -33,7 +34,7 @@ export const createEmployee = async (employeeData: EmployeeFormData): Promise<Em
 
 export const updateEmployee = async (id: string, employeeData: EmployeeFormData): Promise<Employee> => {
   try {
-    const response = await api.put(`/employees/${id}`, employeeData);
+    const response = await api.put(`${ENDPOINTS.EMPLOYEES}/${id}`, employeeData);
     return response.data;
   } catch (error) {
     console.error(`Error updating employee ${id}:`, error);
@@ -43,7 +44,7 @@ export const updateEmployee = async (id: string, employeeData: EmployeeFormData)
 
 export const deleteEmployee = async (id: string): Promise<void> => {
   try {
-    await api.delete(`/employees/${id}`);
+    await api.delete(`${ENDPOINTS.EMPLOYEES}/${id}`);
   } catch (error) {
     console.error(`Error deleting employee ${id}:`, error);
     throw error;
